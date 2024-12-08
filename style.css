@@ -1,102 +1,58 @@
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to right, #e2e2e2, #ffffff);
-  color: #333;
-  overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-header {
-  background: #004d99;
-  color: #fff;
-  padding: 1rem 0;
+/* Projects Section */
+.projects-section {
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background 0.3s ease;
-}
-
-header.scrolled {
-  background: #003366; /* Darker shade on scroll */
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 15px;
-}
-
-nav ul li a {
+  margin: 3rem 1rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
   color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-  color: #b3c6ff;
-  text-decoration: underline;
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
-section {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  opacity: 1; /* Start hidden for animation */
-  transform: translateY(20px); /* Start from below */
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-h1 {
-  color: #f5f5f5;
-}
-h2 {
-  color: #004d99;
-}
-
-.resume, .projects {
-  margin-top: 20px;
-}
-
-footer {
-  background: #004d99;
-  color: #fff;
+.project-card {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
   text-align: center;
-  padding: 10px;
-  position: relative;
-  bottom: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-iframe {
   width: 100%;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+  height: 200px;
+  border: none;
 }
 
-.project-item {
-  margin-bottom: 10px;
+.project-card h3 {
+  margin: 0.5rem 0;
+  color: #ffdf40;
+}
+
+.project-card a {
+  display: inline-block;
+  margin: 1rem 0;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #ff8a00, #da1b60);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   transition: background 0.3s ease;
 }
 
-.project-item:hover {
-  background: #f4f4f4;
-}
-
-.project-item a {
-  color: #004d99;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.project-item a:hover {
-  color: #00264d;
-  text-decoration: underline;
+.project-card a:hover {
+  background: linear-gradient(90deg, #da1b60, #ff8a00);
 }

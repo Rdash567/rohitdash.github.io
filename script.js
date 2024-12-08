@@ -1,60 +1,69 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll effect for header
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+const canvas = document.getElementById("effectsCanvas");
+const ctx = canvas.getContext("2d");
 
-    // Add animation to sections on scroll
-    const sections = document.querySelectorAll('section');
+// Set canvas size
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    const handleScroll = () => {
-        sections.forEach(section => {
-            // Check if the section is in the viewport
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            const viewportTop = window.scrollY;
-            const viewportBottom = viewportTop + window.innerHeight;
+// Particles for fire and bubbles
+const particles = [];
+const colors = ["#ff4500", "#ff6347", "#ff8c00", "#ffa500", "#ffdab9"];
 
-            if (sectionBottom >= viewportTop && sectionTop <= viewportBottom) {
-                section.classList.add('visible');
-            } else {
-                section.classList.remove('visible');
-            }
-        });
-    };
+class Particle {
+  constructor(x, y, color, size) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.size = size;
+    this.speedY = Math.random() * -2 - 1;
+    this.speedX = (Math.random() - 0.5) * 2;
+  }
+  update() {
+    this.y += this.speedY;
+    this.x += this.speedX;
+    this.size *= 0.95; // Shrink over time
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+}
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Trigger animation on page load
-});document.addEventListener('DOMContentLoaded', () => {
-    // Add scroll effect for header
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY < 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+function createParticles() {
+  for (let i = 0; i < 5; i++) {
+    particles.push(
+      new Particle(
+        canvas.width / 2,
+        canvas.height,
+        colors[Math.floor(Math.random() * colors.length)],
+        Math.random() * 10 + 5
+      )
+    );
+  }
+}
 
-    // Add animation to sections on scroll
-    const sections = document.querySelectorAll('section');
+function handleParticles() {
+  particles.forEach((particle, index) => {
+    if (particle.size < 0.5) particles.splice(index, 1); // Remove tiny particles
+    particle.update();
+    particle.draw();
+  });
+}
 
-    const handleScroll = () => {
-        const scrollPosition = window.scrollY + window.innerHeight;
-        sections.forEach(section => {
-            if (scrollPosition > section.offsetTop) {
-                section.classList.add('visible');
-            }
-        });
-    };
+// Animation loop
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  createParticles();
+  handleParticles();
+  requestAnimationFrame(animate);
+}
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Trigger animation on page load
+// Resize canvas
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
-/* ... other styles ... */
 
+animate();
