@@ -1,0 +1,177 @@
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0b0d17, #1a1b3c, #33194f, #59154e);
+    background-size: 400% 400%;
+    animation: bgAnimation 10s ease infinite;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+  
+  @keyframes bgAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Header */
+  header {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+  }
+  
+  header h1 {
+    font-size: 3.5rem;
+    color: #ff007a;
+    text-shadow: 0 0 10px #ff007a, 0 0 30px #6a00ff;
+    animation: textPulse 3s infinite alternate;
+  }
+  
+  @keyframes textPulse {
+    from {
+      transform: scale(1);
+      text-shadow: 0 0 20px #ff007a, 0 0 40px #6a00ff;
+    }
+    to {
+      transform: scale(1.1);
+      text-shadow: 0 0 30px #ff007a, 0 0 50px #6a00ff;
+    }
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  nav ul li {
+    margin: 0 1rem;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #ff007a;
+    transform: scale(1.2);
+  }
+  
+  /* Sections */
+  section {
+    padding: 3rem 2rem;
+    text-align: center;
+    animation: fadeIn 2s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  section h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ff007a;
+    text-shadow: 0 0 10px #ff007a, 0 0 20px #6a00ff;
+    animation: glow 3s infinite alternate;
+  }
+  
+  /* Projects Section */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .project {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    animation: floatUpDown 3s infinite alternate;
+  }
+  
+  @keyframes floatUpDown {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
+  
+  .project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.6);
+  }
+  /* Starry Parallax Effect */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: 3px 3px;
+    background-blend-mode: overlay;
+    opacity: 0.05;
+    animation: starsMove 30s linear infinite;
+    z-index: -1;
+  }
+  
+  @keyframes starsMove {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      transform: translateY(-500px) translateX(-500px);
+    }
+  }
+  /* Adjust bubble sizes and animation */
+  .bubble {
+    width: calc(10px + 20 * var(--size));
+    height: calc(10px + 20 * var(--size));
+    opacity: 0.8;
+    background: radial-gradient(circle, #ff007a, #6a00ff);
+  }
+  
+  /* 3D card effect smoother transitions */
+  .project {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    perspective: 1000px;
+  }
+  
+  .project:hover {
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Skill animation */
+  #skills ul li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  /* Reveal sections */
+  section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  

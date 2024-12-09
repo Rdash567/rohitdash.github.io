@@ -1,58 +1,139 @@
-/* Projects Section */
-.projects-section {
-  text-align: center;
-  margin: 3rem 1rem;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  color: #fff;
+/* Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #000000);
+  color: #ffffff;
+  overflow-x: hidden;
 }
 
-.projects-container {
+/* Header Section */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #ff8a00, #da1b60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
   gap: 2rem;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
-.project-card {
-  width: 300px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
+header nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ff8a00;
+}
+
+/* Sections */
+section {
+  padding: 4rem 2rem;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.project-iframe {
-  width: 100%;
-  height: 200px;
-  border: none;
-}
-
-.project-card h3 {
-  margin: 0.5rem 0;
+section h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
   color: #ffdf40;
 }
 
-.project-card a {
-  display: inline-block;
-  margin: 1rem 0;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(90deg, #ff8a00, #da1b60);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background 0.3s ease;
+section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-.project-card a:hover {
-  background: linear-gradient(90deg, #da1b60, #ff8a00);
+/* Work Section */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.project-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.project-item h4 a {
+  color: #ffdf40;
+  text-decoration: none;
+}
+
+.project-item h4 a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Section */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 1rem 0;
+}
+
+ul li a {
+  color: #ffdf40;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+/* Glow Animation */
+@keyframes glowing {
+  0% {
+    text-shadow: 0 0 5px #ffdf40, 0 0 10px #ffdf40, 0 0 15px #ff8a00, 0 0 20px #da1b60;
+  }
+  50% {
+    text-shadow: 0 0 10px #ffdf40, 0 0 20px #ff8a00, 0 0 30px #da1b60, 0 0 40px #ff8a00;
+  }
+  100% {
+    text-shadow: 0 0 5px #ffdf40, 0 0 10px #ffdf40, 0 0 15px #ff8a00, 0 0 20px #da1b60;
+  }
+}
+
+h1, h2 {
+  animation: glowing 3s infinite;
 }
