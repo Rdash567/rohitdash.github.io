@@ -3,6 +3,9 @@ const textElement = document.getElementById('animated-text');
 const text = "Hi, I'm Rohit!";
 let i = 0;
 
+// Ensure the content is cleared before typing starts
+textElement.innerHTML = ""; 
+
 function typeText() {
   if (i < text.length) {
     textElement.innerHTML += text.charAt(i);
@@ -17,6 +20,7 @@ window.addEventListener("scroll", () => {
   const offset = window.pageYOffset;
   document.body.style.backgroundPositionY = offset * 0.5 + "px";
 });
+
 
 // Interactive Project Cards
 const projectCards = document.querySelectorAll(".project");
@@ -98,4 +102,20 @@ projectCards.forEach((card) => {
       }
     });
   });
-  
+  // Create fewer bubbles by increasing the interval time
+function createRealisticBubble() {
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.style.left = `${Math.random() * 100}vw`;
+  bubble.style.setProperty("--size", Math.random()); // Random bubble size factor
+  bubble.style.animationDuration = `${4 + Math.random() * 6}s`; // Random animation duration
+  bubble.style.filter = `blur(${Math.random() * 2}px)`; // Slight blur for realism
+
+  document.body.appendChild(bubble);
+
+  // Remove the bubble after animation ends
+  bubble.addEventListener("animationend", () => bubble.remove());
+}
+
+// Increase the interval to reduce the number of bubbles
+setInterval(createRealisticBubble, 1000); // Every 1 second instead of every 500ms
