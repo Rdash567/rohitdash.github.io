@@ -5,6 +5,10 @@
     box-sizing: border-box;
   }
   
+#timeline{
+  background-color: pink;
+}
+
   body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #0b0d17, #1a1b3c);
